@@ -19,6 +19,11 @@ public class PlayerMove : MonoBehaviour {
 	}
 		
 	private void Update() {
+		//exit application
+		if(Input.GetKey(KeyCode.Escape)) {
+			Application.Quit ();
+		}
+
 		//moves player forwards or backwards
 		if(Input.GetKey(KeyCode.W)) {
 			gameObject.transform.TransformDirection(Vector3.forward);
@@ -62,6 +67,7 @@ public class PlayerMove : MonoBehaviour {
 		isJumping = false;
 	}
 
+	//uses perlin noise ot check how far away from the ground
 	public float GetBlockHeightAtPos(Vector2 pos) {
 		Vector3 playerPosition = GameObject.Find("Player").transform.position;
 
