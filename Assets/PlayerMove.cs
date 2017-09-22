@@ -17,21 +17,24 @@ public class PlayerMove : MonoBehaviour {
 	private void Start() {
 		playerRB = GetComponent<Rigidbody>();  //gets the player rigidbody.
 	}
-		
+
+	private void FixedUpdate() {
+		//moves player forwards or backwards
+		if(Input.GetKey(KeyCode.W)) {
+			gameObject.transform.TransformDirection(Vector3.forward);
+			gameObject.transform.Translate(new Vector3(0, 0, moveSpeed));
+		}
+		else if(Input.GetKey(KeyCode.S)) {
+			gameObject.transform.TransformDirection(Vector3.forward);
+			gameObject.transform.Translate(new Vector3(0, 0, -moveSpeed));
+		}
+
+	}
+
 	private void Update() {
 		//exit application
 		if(Input.GetKey(KeyCode.Escape)) {
 			Application.Quit ();
-		}
-
-		//moves player forwards or backwards
-		if(Input.GetKey(KeyCode.W)) {
-			gameObject.transform.TransformDirection(Vector3.forward);
-			gameObject.transform.Translate(new Vector3(0, 0, moveSpeed) * Time.deltaTime);
-		}
-		else if(Input.GetKey(KeyCode.S)) {
-			gameObject.transform.TransformDirection(Vector3.forward);
-			gameObject.transform.Translate(new Vector3(0, 0, -moveSpeed) * Time.deltaTime);
 		}
 
 		//jumping can be done while moving

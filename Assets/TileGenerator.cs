@@ -19,12 +19,11 @@ public class TileGenerator : MonoBehaviour {
 
 	public int chunkWidth = 3; //must be odd.
 
-	// Use this for initialization
 
 	void Start () {
 		//Init random seeds.
-		xSeed = Random.Range (-1000f, 1000f);
-		ySeed = Random.Range (-1000f, 1000f);
+		xSeed = Random.Range (-1000000f, 1000000f);
+		ySeed = Random.Range (-1000000f, 1000000f);
 
 		parent = GameObject.Find("ChunkHolder");
 
@@ -40,12 +39,13 @@ public class TileGenerator : MonoBehaviour {
 		//set pos marker
 		homeChunk = new Vector2(0, 0);
 	}
-
+		
 
 	public List<Vector2> chunkCreateQue;
 
 	void queCreateChunk (Vector2 pos) {
 		chunkCreateQue.Add(pos);
+		print (pos);
 	}
 
 	public List<Vector2> chunkList;
